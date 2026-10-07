@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # आदर्श रामलीला समिति – वित्त प्रबंधन प्रणाली
 
 A professional web-based Financial Management System designed for managing the income, expenses, transactions, members, and financial reports of Adarsh Ramlila Samiti, Bansapur.
@@ -138,3 +139,7 @@ Adarsh-Ramlila-Finance-Management-System/
 │   └── icons/
 │
 └── screenshots/
+=======
+# Adarsh-Ramlila-Finance-Management-System
+A professional web-based financial management system for managing Ramlila committee income, expenses, transactions, reports, and members.
+>>>>>>> 7b974b34e3a3c6c43b926e7c30f3ba24f37d0779
