@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>आदर्श रामलीला समिति | वित्त प्रबंधन</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="app" id="dashboardApp" style="display:none;">
+    
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+
+        <div class="brand">
+            <div class="brand-icon">ॐ</div>
+            <div>
+                <h2>आदर्श रामलीला</h2>
+                <span>वित्त प्रबंधन</span>
+            </div>
+        </div>
+
+        <nav class="menu">
+
+            <p class="menu-title">मुख्य मेनू</p>
+
+            <a href="#" class="menu-item active" data-page="dashboard">
+                <span>⌂</span>
+                <span>डैशबोर्ड</span>
+            </a>
+
+            <a href="#" class="menu-item" data-page="income">
+                <span>＋</span>
+                <span>आय दर्ज करें</span>
+            </a>
+
+            <a href="#" class="menu-item" data-page="expense">
+                <span>−</span>
+                <span>व्यय दर्ज करें</span>
+            </a>
+
+            <a href="#" class="menu-item" data-page="transactions">
+                <span>▤</span>
+                <span>लेन-देन</span>
+            </a>
+
+            <p class="menu-title">रिपोर्ट</p>
+
+            <a href="#" class="menu-item" data-page="reports">
+                <span>▥</span>
+                <span>रिपोर्ट</span>
+            </a>
+
+            <a href="#" class="menu-item" data-page="members">
+                <span>♙</span>
+                <span>सदस्य</span>
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+            <button class="logout-btn" onclick="logout()">
+                <span>↪</span> लॉगआउट
+            </button>
+        </div>
+
+    </aside>
+
+
+    <!-- Main -->
+    <main class="main">
+
+        <!-- Header -->
+        <header class="header">
+
+            <button class="mobile-menu" onclick="toggleSidebar()">☰</button>
+
+            <div class="header-title">
+                <h1 id="pageTitle">डैशबोर्ड</h1>
+                <p>आदर्श रामलीला समिति के वित्त का प्रबंधन करें</p>
+            </div>
+
+            <div class="header-right">
+
+                <button class="notification" onclick="showNotification()">
+                    🔔
+                    <span></span>
+                </button>
+
+                <div class="profile">
+                    <div class="avatar">G</div>
+                    <div>
+                        <strong>Admin</strong>
+                        <small>प्रबंधक</small>
+                    </div>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- Content -->
+        <section class="content">
+
+            <!-- Dashboard -->
+            <div id="dashboard" class="page active-page">
+
+                <div class="welcome">
+                    <div>
+                        <h2>नमस्ते, Admin जी 👋</h2>
+                        <p>आज की वित्तीय स्थिति का अवलोकन करें।</p>
+                    </div>
+
+                    <button class="primary-btn" onclick="openIncomeModal()">
+                        ＋ नई आय
+                    </button>
+                </div>
+
+
+                <!-- Cards -->
+                <div class="cards">
+
+                    <div class="card income-card">
+                        <div class="card-top">
+                            <div>
+                                <p>कुल आय</p>
+                                <h2>₹1,25,000</h2>
+                            </div>
+
+                            <div class="card-icon">↗</div>
+                        </div>
+
+                        <div class="card-footer">
+                            <span class="positive">↑ 12.5%</span>
+                            <span>पिछले महीने से</span>
+                        </div>
+                    </div>
+
+
+                    <div class="card expense-card">
+                        <div class="card-top">
+                            <div>
+                                <p>कुल व्यय</p>
+                                <h2>₹48,500</h2>
+                            </div>
+
+                            <div class="card-icon">↘</div>
+                        </div>
+
+                        <div class="card-footer">
+                            <span class="negative">↑ 5.2%</span>
+                            <span>पिछले महीने से</span>
+                        </div>
+                    </div>
+
+
+                    <div class="card balance-card">
+                        <div class="card-top">
+                            <div>
+                                <p>शेष राशि</p>
+                                <h2>₹76,500</h2>
+                            </div>
+
+                            <div class="card-icon">₹</div>
+                        </div>
+
+                        <div class="card-footer">
+                            <span class="positive">उपलब्ध</span>
+                            <span>वर्तमान बैलेंस</span>
+                        </div>
+                    </div>
+
+
+                    <div class="card transaction-card">
+                        <div class="card-top">
+                            <div>
+                                <p>कुल लेन-देन</p>
+                                <h2>128</h2>
+                            </div>
+
+                            <div class="card-icon">▤</div>
+                        </div>
+
+                        <div class="card-footer">
+                            <span>इस महीने</span>
+                            <span>24 नए</span>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <!-- Middle Section -->
+                <div class="dashboard-grid">
+
+                    <!-- Chart -->
+                    <div class="panel chart-panel">
+
+                        <div class="panel-header">
+                            <div>
+                                <h3>आय एवं व्यय</h3>
+                                <p>मासिक वित्तीय स्थिति</p>
+                            </div>
+
+                            <select id="chartYear">
+                                <option>2026</option>
+                                <option>2025</option>
+                                <option>2024</option>
+                            </select>
+                        </div>
+
+                        <div class="chart">
+
+                            <div class="y-axis">
+                                <span>₹50K</span>
+                                <span>₹40K</span>
+                                <span>₹30K</span>
+                                <span>₹20K</span>
+                                <span>₹10K</span>
+                                <span>₹0</span>
+                            </div>
+
+                            <div class="chart-area">
+
+                                <div class="grid-line"></div>
+                                <div class="grid-line"></div>
+                                <div class="grid-line"></div>
+                                <div class="grid-line"></div>
+                                <div class="grid-line"></div>
+
+                                <div class="bars">
+
+                                    <div class="bar-group">
+                                        <div class="bar income" style="height:75%"></div>
+                                        <div class="bar expense" style="height:40%"></div>
+                                        <small>जन</small>
+                                    </div>
+
+                                    <div class="bar-group">
+                                        <div class="bar income" style="height:65%"></div>
+                                        <div class="bar expense" style="height:35%"></div>
+                                        <small>फर</small>
+                                    </div>
+
+                                    <div class="bar-group">
+                                        <div class="bar income" style="height:82%"></div>
+                                        <div class="bar expense" style="height:48%"></div>
+                                        <small>मार्च</small>
+                                    </div>
+
+                                    <div class="bar-group">
+                                        <div class="bar income" style="height:60%"></div>
+                                        <div class="bar expense" style="height:42%"></div>
+                                        <small>अप्रैल</small>
+                                    </div>
+
+                                    <div class="bar-group">
+                                        <div class="bar income" style="height:88%"></div>
+                                        <div class="bar expense" style="height:50%"></div>
+                                        <small>मई</small>
+                                    </div>
+
+                                    <div class="bar-group">
+                                        <div class="bar income" style="height:78%"></div>
+                                        <div class="bar expense" style="height:45%"></div>
+                                        <small>जून</small>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="legend">
+                            <span><i class="income-dot"></i> आय</span>
+                            <span><i class="expense-dot"></i> व्यय</span>
+                        </div>
+
+                    </div>
+
+
+                    <!-- Quick Actions -->
+                    <div class="panel quick-panel">
+
+                        <div class="panel-header">
+                            <div>
+                                <h3>त्वरित कार्य</h3>
+                                <p>सामान्य कार्यों तक जल्दी पहुँचें</p>
+                            </div>
+                        </div>
+
+                        <button class="quick-btn income-q" onclick="openIncomeModal()">
+                            <div>＋</div>
+                            <span>
+                                <strong>आय दर्ज करें</strong>
+                                <small>नई प्राप्ति जोड़ें</small>
+                            </span>
+                            <b>›</b>
+                        </button>
+
+                        <button class="quick-btn expense-q" onclick="openExpenseModal()">
+                            <div>−</div>
+                            <span>
+                                <strong>व्यय दर्ज करें</strong>
+                                <small>नया खर्च जोड़ें</small>
+                            </span>
+                            <b>›</b>
+                        </button>
+
+                        <button class="quick-btn report-q" onclick="showPage('reports')">
+                            <div>▥</div>
+                            <span>
+                                <strong>रिपोर्ट देखें</strong>
+                                <small>वित्तीय रिपोर्ट प्राप्त करें</small>
+                            </span>
+                            <b>›</b>
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Transactions -->
+                <div class="panel recent-panel">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <h3>हाल के लेन-देन</h3>
+                            <p>हाल में दर्ज किए गए वित्तीय लेन-देन</p>
+                        </div>
+
+                        <button class="view-btn" onclick="showPage('transactions')">
+                            सभी देखें →
+                        </button>
+
+                    </div>
+
+
+                    <div class="table-wrapper">
+
+                        <table>
+
+                            <thead>
+                                <tr>
+                                    <th>दिनांक</th>
+                                    <th>विवरण</th>
+                                    <th>श्रेणी</th>
+                                    <th>प्रकार</th>
+                                    <th>राशि</th>
+                                    <th>स्थिति</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="transactionBody">
+
+                                <tr>
+                                    <td>06 Oct 2026</td>
+                                    <td>
+                                        <strong>दान राशि</strong>
+                                        <small>रामलीला आयोजन</small>
+                                    </td>
+                                    <td>दान</td>
+                                    <td><span class="type income">आय</span></td>
+                                    <td class="amount income-text">+ ₹10,000</td>
+                                    <td><span class="status">पूर्ण</span></td>
+                                </tr>
+
+                                <tr>
+                                    <td>05 Oct 2026</td>
+                                    <td>
+                                        <strong>स्टेज सजावट</strong>
+                                        <small>कार्यक्रम खर्च</small>
+                                    </td>
+                                    <td>सजावट</td>
+                                    <td><span class="type expense">व्यय</span></td>
+                                    <td class="amount expense-text">− ₹7,500</td>
+                                    <td><span class="status">पूर्ण</span></td>
+                                </tr>
+
+                                <tr>
+                                    <td>04 Oct 2026</td>
+                                    <td>
+                                        <strong>प्रायोजक राशि</strong>
+                                        <small>मुख्य प्रायोजक</small>
+                                    </td>
+                                    <td>प्रायोजन</td>
+                                    <td><span class="type income">आय</span></td>
+                                    <td class="amount income-text">+ ₹25,000</td>
+                                    <td><span class="status">पूर्ण</span></td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Other Pages -->
+            <div id="income" class="page">
+                <div class="page-heading">
+                    <h2>आय दर्ज करें</h2>
+                    <p>समिति को प्राप्त नई राशि दर्ज करें।</p>
+                </div>
+
+                <div class="form-panel">
+                    <form onsubmit="saveIncome(event)">
+
+                        <div class="form-grid">
+
+                            <div class="form-group">
+                                <label>दिनांक</label>
+                                <input type="date" id="incomeDate" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>राशि (₹)</label>
+                                <input type="number" id="incomeAmount" placeholder="जैसे 10000" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>विवरण</label>
+                                <input type="text" id="incomeDescription" placeholder="आय का विवरण" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>श्रेणी</label>
+                                <select id="incomeCategory">
+                                    <option>दान</option>
+                                    <option>प्रायोजन</option>
+                                    <option>चंदा</option>
+                                    <option>अन्य</option>
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <button class="primary-btn" type="submit">आय सेव करें</button>
+
+                    </form>
+                </div>
+            </div>
+
+
+            <div id="expense" class="page">
+
+                <div class="page-heading">
+                    <h2>व्यय दर्ज करें</h2>
+                    <p>समिति द्वारा किए गए खर्च को दर्ज करें।</p>
+                </div>
+
+                <div class="form-panel">
+
+                    <form onsubmit="saveExpense(event)">
+
+                        <div class="form-grid">
+
+                            <div class="form-group">
+                                <label>दिनांक</label>
+                                <input type="date" id="expenseDate" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>राशि (₹)</label>
+                                <input type="number" id="expenseAmount" placeholder="जैसे 5000" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>विवरण</label>
+                                <input type="text" id="expenseDescription" placeholder="खर्च का विवरण" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>श्रेणी</label>
+                                <select id="expenseCategory">
+                                    <option>सजावट</option>
+                                    <option>मंच</option>
+                                    <option>प्रचार</option>
+                                    <option>भोजन</option>
+                                    <option>अन्य</option>
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <button class="primary-btn" type="submit">व्यय सेव करें</button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+
+            <div id="transactions" class="page">
+
+                <div class="page-heading">
+                    <h2>सभी लेन-देन</h2>
+                    <p>सभी आय और व्यय का रिकॉर्ड।</p>
+                </div>
+
+                <div class="panel">
+
+                    <div class="search-box">
+                        <input type="text" id="searchInput" placeholder="लेन-देन खोजें..." onkeyup="searchTransactions()">
+                    </div>
+
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>दिनांक</th>
+                                    <th>विवरण</th>
+                                    <th>श्रेणी</th>
+                                    <th>प्रकार</th>
+                                    <th>राशि</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="allTransactions">
+                                <tr>
+                                    <td>06 Oct 2026</td>
+                                    <td>दान राशि</td>
+                                    <td>दान</td>
+                                    <td><span class="type income">आय</span></td>
+                                    <td class="income-text">+ ₹10,000</td>
+                                </tr>
+
+                                <tr>
+                                    <td>05 Oct 2026</td>
+                                    <td>स्टेज सजावट</td>
+                                    <td>सजावट</td>
+                                    <td><span class="type expense">व्यय</span></td>
+                                    <td class="expense-text">− ₹7,500</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div id="reports" class="page">
+
+                <div class="page-heading">
+                    <h2>वित्तीय रिपोर्ट</h2>
+                    <p>समिति की वित्तीय स्थिति की रिपोर्ट।</p>
+                </div>
+
+                <div class="report-cards">
+
+                    <div class="report-box">
+                        <span>कुल आय</span>
+                        <strong>₹1,25,000</strong>
+                    </div>
+
+                    <div class="report-box">
+                        <span>कुल व्यय</span>
+                        <strong>₹48,500</strong>
+                    </div>
+
+                    <div class="report-box">
+                        <span>कुल शेष</span>
+                        <strong>₹76,500</strong>
+                    </div>
+
+                </div>
+
+                <div class="panel report-panel">
+                    <h3>रिपोर्ट डाउनलोड करें</h3>
+                    <p>वित्तीय रिपोर्ट को PDF/Excel में प्राप्त करें।</p>
+
+                    <button class="primary-btn" onclick="downloadReport()">
+                        ↓ रिपोर्ट डाउनलोड करें
+                    </button>
+                </div>
+
+            </div>
+
+
+            <div id="members" class="page">
+
+                <div class="page-heading">
+                    <h2>समिति के सदस्य</h2>
+                    <p>समिति के सदस्यों का विवरण।</p>
+                </div>
+
+                <div class="members-grid">
+
+                    <div class="member-card">
+                        <div class="member-avatar">G</div>
+                        <h3>Admin</h3>
+                        <p>प्रबंधक</p>
+                    </div>
+
+                    <div class="member-card">
+                        <div class="member-avatar">R</div>
+                        <h3>राम कुमार</h3>
+                        <p>अध्यक्ष</p>
+                    </div>
+
+                    <div class="member-card">
+                        <div class="member-avatar">S</div>
+                        <h3>सुरेश यादव</h3>
+                        <p>कोषाध्यक्ष</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- Modal -->
+<div class="modal" id="modal">
+
+    <div class="modal-box">
+
+        <button class="close-modal" onclick="closeModal()">×</button>
+
+        <div class="modal-icon">＋</div>
+
+        <h2>नई आय दर्ज करें</h2>
+        <p>प्राप्त राशि की जानकारी भरें।</p>
+
+        <form onsubmit="modalSaveIncome(event)">
+
+            <div class="form-group">
+                <label>राशि (₹)</label>
+                <input type="number" id="modalAmount" placeholder="10000" required>
+            </div>
+
+            <div class="form-group">
+                <label>विवरण</label>
+                <input type="text" id="modalDescription" placeholder="दान राशि" required>
+            </div>
+
+            <button class="primary-btn full-btn">सेव करें</button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<div class="toast" id="toast">
+    <span>✓</span>
+    <p id="toastText">सफलतापूर्वक सेव किया गया।</p>
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+<!-- Professional Login Page -->
+<div id="loginPage" style="
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#ff9933,#fff5e6,#138808);
+font-family:'Noto Sans Devanagari',sans-serif;
+">
+
+    <div style="
+    width:380px;
+    background:#ffffff;
+    padding:35px;
+    border-radius:20px;
+    box-shadow:0 15px 40px rgba(0,0,0,0.15);
+    text-align:center;
+    ">
+
+        <!-- Logo -->
+        <div style="
+        width:80px;
+        height:80px;
+        margin:auto;
+        border-radius:50%;
+        background:#ff9933;
+        color:white;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        font-size:36px;
+        font-weight:bold;
+        ">
+            ॐ
+        </div>
+
+        <!-- Committee Name -->
+        <h1 style="
+        margin-top:15px;
+        margin-bottom:5px;
+        color:#d35400;
+        font-size:28px;
+        ">
+            आदर्श रामलीला समिति
+        </h1>
+
+        <h3 style="
+        margin-top:0;
+        color:#444;
+        font-weight:500;
+        ">
+            बाँसापुर
+        </h3>
+
+        <p style="
+        color:#777;
+        margin-bottom:25px;
+        ">
+            वित्त प्रबंधन प्रणाली
+        </p>
+
+        <!-- Username -->
+        <input
+            type="text"
+            id="username"
+            placeholder="यूजरनेम दर्ज करें"
+            style="
+            width:100%;
+            padding:12px;
+            margin-bottom:15px;
+            border:1px solid #ddd;
+            border-radius:10px;
+            font-size:15px;
+            box-sizing:border-box;
+        ">
+
+        <!-- Password -->
+        <input
+            type="password"
+            id="password"
+            placeholder="पासवर्ड दर्ज करें"
+            style="
+            width:100%;
+            padding:12px;
+            margin-bottom:20px;
+            border:1px solid #ddd;
+            border-radius:10px;
+            font-size:15px;
+            box-sizing:border-box;
+        ">
+
+        <!-- Login Button -->
+        <button onclick="login()" style="
+        width:100%;
+        padding:12px;
+        background:#d35400;
+        color:white;
+        border:none;
+        border-radius:10px;
+        font-size:16px;
+        font-weight:bold;
+        cursor:pointer;
+        ">
+            लॉगिन करें
+        </button>
+
+        <!-- Error Message -->
+        <p id="errorMsg" style="
+        color:red;
+        margin-top:15px;
+        font-size:14px;
+        "></p>
+
+        <!-- Footer -->
+        <div style="
+        margin-top:20px;
+        color:#888;
+        font-size:12px;
+        ">
+            © 2026 रामलीला समिति बाँसापुर
+        </div>
+
+    </div>
+</div>
+</html>
